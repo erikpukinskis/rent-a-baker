@@ -1,0 +1,20 @@
+{
+  "name": "rent-a-baker",
+  "version": "0.0.0",
+  "description": "Bake bread",
+  "main": "rent-a-baker.js",
+  "dependencies": {
+    "module-library": "*",
+    "web-host": "*",
+    "web-element": "*",
+    "basic-styles": "*",
+    "web-host": "*",
+    "show-source": "*",
+    "make-it-checkable": "*",
+    "identifiable": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erikpukinskis/rent-a-baker.git"
+  }
+}
