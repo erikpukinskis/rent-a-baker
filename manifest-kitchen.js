@@ -3,8 +3,8 @@ var library = require("module-library")(require)
 
 library.define(
   "manifest-kitchen",
-  ["issue-bond", "render-bond-purchase-form"],
-  function(issueBond, purchase) {
+  ["issue-bond", "sell-bond"],
+  function(issueBond, sellBond) {
 
     var bond = issueBond(
       "kitchen",
@@ -47,22 +47,24 @@ library.define(
 
     // begin
 
-    return purchase(bond)
+    return sellBond(bond)
   }
 )
 
 
 library.define(
-  "render-bond-purchase-form",
+  "sell-bond",
   ["web-element"],
   function(element) {
     return function(bond) { 
       return function(bridge) {
-        bridge.send([
+        var page = element([
           element("h2", element.style({"text-transform": "capitalize"}), "Buy "+bond.id+ " bond"),
           element("p", bond.rateOfReturn+" return in "+bond.termLength+" (estimated)"),
           element(".button", "Buy")
         ])
+        
+        bridge.send(page)
       }
     }
 
@@ -80,8 +82,8 @@ library.define(
 
 
 library.using(
-  ["web-host", "show-source", library.ref(), "manifest-kitchen", "web-element", "basic-styles", "tell-the-universe", "javascript-to-ezjs", "an-expression"],
-  function collectiveMagic(host, showSource, lib, renderBondPurchaseForm, element, basicStyles, tellTheUniverse, javascriptToEzjs, anExpression) {
+  ["web-host", "show-source", library.ref()],
+  function collectiveMagic(host, showSource, lib) {
 
     host.onRequest(function(getBridge) {
       var bridge = getBridge()
