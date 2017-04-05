@@ -11,7 +11,8 @@
     "web-host": "*",
     "show-source": "*",
     "make-it-checkable": "*",
-    "identifiable": "*"
+    "identifiable": "*",
+    "issue-bond": "*"
   },
   "repository": {
     "type": "git",
