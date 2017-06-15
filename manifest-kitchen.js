@@ -63,7 +63,7 @@ library.define(
           element("p", bond.rateOfReturn+" return in "+bond.termLength+" (estimated)"),
           element(".button", "Buy")
         ])
-        
+
         bridge.send(page)
       }
     }
