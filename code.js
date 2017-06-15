@@ -4,7 +4,8 @@ library.define(
   "code",
   ["web-host", "web-element", "basic-styles"],
   function(host, element, basicStyles) {
-    host.onVoxel(function(bridge) {
+    host.onRequest(function(getBridge) {
+      var bridge = getBridge()
       basicStyles.addTo(bridge)
       var form = element([
         element("textarea"),
