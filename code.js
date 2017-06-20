@@ -15,7 +15,6 @@ library.define(
           "padding": "0",
           "font-size": "23px",
           "line-height": "30px",
-          "height": "300px",
           "width": "100%",
           "border": "0",
           "background": "#fcf6ff",
@@ -37,6 +36,10 @@ library.define(
           "background": "#ecf0fb",
         }),
 
+        element.style(".statement.is-function", {
+          "background": "#bfd",
+        }),
+
         element.style(".statement.two-line", {
           "margin-bottom": "35px",
         }),
@@ -47,24 +50,41 @@ library.define(
       ])
 
       var code = [
-"define watershed",
-"  roll two 2x4s into 8x16 tarp",
-"  dig pond, build watershed, lay tarp",
-"  pavers and mortar, build compost basin",
-"  pond pours off into compost pile, which drains into irrigation pit",
-"  bucket for bringing water up to irrigation ditch",
+"only easy things allowed in here",
+"",
+"function today",
+"mow #x10",
+"mulch",
+"plant",
+"",
+"function plant",
+"bag",
+"soil #✓",
+"seed",
+"issueBond",
+"",
+"function watershed",
+"$50",
+"roll two 2x4s into 8x16 tarp",
+"dig pond, build watershed, lay tarp",
+"pavers and mortar, build compost basin",
+"pond pours off into compost pile, which drains into irrigation pit",
+"bucket for bringing water up to irrigation ditch",
 ]
 
-      var timeline = element(".timeline", [
-        element(".statement"),
-        element(".statement"),
-        element(".statement"),
-        element(".statement"),
-        element(".statement.two-line"),
-        element(".statement.two-line"),
-        element(".statement.is-empty"),
-        element(".statement.is-empty"),
-      ])
+      var timeline = element(".timeline")
+
+      for(var i=0; i<code.length; i++) {
+        var statement = code[i]
+        var el = element(".statement")
+        if (i == 18) {
+          el.addSelector(".two-line")
+        }
+        if (statement.substr(0, 8) == "function") {
+          el.addSelector(".is-function")
+        }
+        timeline.addChild(el)
+      }
 
       var buyButton = element("button", "Buy $50 Bond")
 
@@ -72,7 +92,13 @@ library.define(
         stylesheet,
         element("p", "Unbonded ", buyButton),
         timeline,
-        element("textarea", code.join("\n")),
+        element(
+          "textarea",
+          code.join("\n"),
+          element.style({
+            "height": ((code.length+1)*30)+"px",
+          })
+        ),
       ])
 
       bridge.send(form)
