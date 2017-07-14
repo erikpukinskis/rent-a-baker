@@ -1,13 +1,19 @@
 var library = require("module-library")(require)
 
 library.define(
-  "rent-a-baker",
+  "bake-shit", // fuck this noise
   ["./issue-bond", "web-host", "show-source", "make-it-checkable", "web-element", library.ref()],
   function(issueBond, webHost, showSource, makeItCheckable, webElement, library) {
+
+
 
     // My name is Inigo Montoya. You killed my father. Prepare to die.
 
     // A love/hate letter to capitalism
+
+
+    // The piece I was missing in this is that I start by just fucking baking shit. Bake first, ask sales questions later.
+
 
     var rentABaker = issueBond([
       "snap rent-a-baker service on Marie's phone",
